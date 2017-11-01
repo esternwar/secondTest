@@ -130,7 +130,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url="https://bot.herokuapp.com/new_line")
+    bot.set_webhook(url="https://botniceref.herokuapp.com/new_line")
     return "!", 200
 
 server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
