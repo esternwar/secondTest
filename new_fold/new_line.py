@@ -1,6 +1,8 @@
 from telebot import types
 import telebot
 from unit import items
+import os
+from flask import Flask, request
 
 bot = telebot.TeleBot('432228990:AAFI4tjOzj-0esXcO-afVe-oA004EZPEDow')
 
@@ -117,8 +119,19 @@ def piz(msg):
     keyboard.add(item5)
     return keyboard
 
+server = Flask(__name__)
 
 
+@server.route("/bot", methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
 
-if __name__ == '__main__':
-     bot.polling(none_stop=True)
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url="https://botniceref.herokuapp.com/")
+    return "!", 200
+
+server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+server = Flask(__name__)
