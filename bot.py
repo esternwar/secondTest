@@ -4,7 +4,7 @@ from unit import items
 import os
 from flask import Flask, request
 
-bot = telebot.TeleBot('432228990:AAFI4tjOzj-0esXcO-afVe-oA004EZPEDow')
+bot = telebot.TeleBot('')
 
 @bot.message_handler(commands=['start'])	
 def custom(message):
