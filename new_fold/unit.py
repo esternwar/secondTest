@@ -7,7 +7,7 @@ about = "Описание блюда"
 id = [1,2,3,4]
 class items:
 	def garnir(message):
-		bot = telebot.TeleBot('432228990:AAFI4tjOzj-0esXcO-afVe-oA004EZPEDow')
+		bot = telebot.TeleBot('')
 		f = open('images/1.jpg', 'rb')
 		bot.send_photo(message.chat.id, f, None)
 		keyboard = types.InlineKeyboardMarkup()
